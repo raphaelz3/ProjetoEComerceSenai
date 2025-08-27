@@ -33,8 +33,9 @@ CREATE TABLE clinica.consulta(
 );
 
 --Excluir Tabelas
+/*
 DROP TABLE clinica.consulta;
 DROP TABLE clinica.clinica;
 DROP TABLE clinica.paciente;
 DROP TABLE clinica.medico;
-	 
+*/
