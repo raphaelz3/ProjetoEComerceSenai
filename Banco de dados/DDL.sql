@@ -1,5 +1,5 @@
 CREATE SCHEMA clinica;
-
+--Criar TAbelas
 CREATE TABLE clinica.medico(
 	id_medico INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
 	nome TEXT NOT NULL,
@@ -31,4 +31,10 @@ CREATE TABLE clinica.consulta(
 	id_clinica INT NOT NULL REFERENCES clinica.clinica(id_clinica), --metodo curto
 	id_paciente INT NOT NULL REFERENCES clinica.paciente(id_paciente)
 );
+
+--Excluir Tabelas
+DROP TABLE clinica.consulta;
+DROP TABLE clinica.clinica;
+DROP TABLE clinica.paciente;
+DROP TABLE clinica.medico;
 	 
