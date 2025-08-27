@@ -1,0 +1,16 @@
+DDL - Comandos que Criam, Editam ou Removem Tabelas, Colunas, Schema, Banco de Dados
+
+CREATE <O QUE CRIAR>
+DROP <O QUE REMOVER>
+ALTER <O QUE EDITAR>
+
+DML (Linguagem de Manipulação de Dados) - Inserem, Editam ou Removem Dados
+
+INSERT <O QUE INSERIR>
+DELETE <O QUE EXCLUIR>
+UPDATE <O QUE ATUALIZAR>
+
+DQL (Linguagem de Consulta de Dados)
+- Visualização de Dados
+
+SELECT - Seleciona Dados para serem Visualizados
