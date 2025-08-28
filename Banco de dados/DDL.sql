@@ -25,7 +25,7 @@ CREATE TABLE clinica.paciente(
 
 CREATE TABLE clinica.clinica(
 	id_clinica INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-	nome INT NOT NULL,
+	nome TEXT NOT NULL,
 	endereco TEXT NOT NULL,
 	descricao TEXT NOT NULL
 );
@@ -57,6 +57,6 @@ ALTER TABLE clinica.paciente ADD COLUMN telefone NUMERIC (11); -- adiciona colun
 ALTER TABLE clinica.paciente ADD COLUMN email TEXT UNIQUE; -- adiciona columa email em que o dado é unico na tabela
 ALTER TABLE clinica.paciente DROP COLUMN telefone; -- Excluir coluna
 ALTER TABLE clinica.paciente RENAME TO novopaciente -- renomeando a tabela paciente para novopaciente
-
+ALTER TABLE clinica.clinica ALTER COLUMN nome TYPE TEXT;
 --DML (Linguagem de Manipulação de Dados) - Inserem, Editam ou Removem Dados
 
