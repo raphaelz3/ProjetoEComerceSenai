@@ -41,10 +41,10 @@ CREATE TABLE clinica.consulta(
 
 --Excluir Tabelas
 
-DROP TABLE clinica.consulta;
-DROP TABLE clinica.clinica;
-DROP TABLE clinica.paciente;
-DROP TABLE clinica.medico;
+DROP TABLE IF EXISTS clinica.consulta; --IF EXISTS é usado para o comando só ser execultado se realmente existe
+DROP TABLE IF EXISTS clinica.clinica;
+DROP TABLE IF EXISTS clinica.paciente;
+DROP TABLE IF EXISTS clinica.medico;
 
 --Limpar Tabela
 TRUNCATE TABLE clinica.consulta
