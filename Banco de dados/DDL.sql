@@ -56,3 +56,6 @@ ALTER TABLE clinica.paciente ADD COLUMN telefone NUMERIC (11); -- adiciona colun
 ALTER TABLE clinica.paciente ADD COLUMN email TEXT UNIQUE; -- adiciona columa email em que o dado é unico na tabela
 ALTER TABLE clinica.paciente DROP COLUMN telefone; -- Excluir coluna
 ALTER TABLE clinica.paciente RENAME TO novopaciente -- renomeando a tabela paciente para novopaciente
+
+--DML (Linguagem de Manipulação de Dados) - Inserem, Editam ou Removem Dados
+
