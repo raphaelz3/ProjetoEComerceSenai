@@ -19,7 +19,8 @@ CREATE TABLE clinica.paciente(
 	cpf TEXT NOT NULL,
 	nome TEXT NOT NULL,
 	idade INT NOT NULL,
-	data_de_nascimento DATE NOT NULL
+	data_de_nascimento DATE NOT NULL,
+	email TEXT UNIQUE
 );
 
 CREATE TABLE clinica.clinica(
