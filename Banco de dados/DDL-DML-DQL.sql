@@ -1,10 +1,10 @@
 --DDL Comandos que Criam, Editam ou Removem Tabelas, Colunas, Schema, Banco de Dados
 /* 
-
-CREATE <O QUE CRIAR>
-DROP <O QUE REMOVER>
-ALTER <O QUE EDITAR>
+	CREATE <O QUE CRIAR>
+	DROP <O QUE REMOVER>
+	ALTER <O QUE EDITAR>
 */
+
 CREATE SCHEMA clinica;
 --Criar TAbelas
 CREATE TABLE clinica.medico(
@@ -54,4 +54,5 @@ TRUNCATE TABLE clinica.consulta
 
 ALTER TABLE clinica.paciente ADD COLUMN telefone NUMERIC (11); -- adiciona coluna telefone
 ALTER TABLE clinica.paciente ADD COLUMN email TEXT UNIQUE; -- adiciona columa email em que o dado é unico na tabela
-ALTER TABLE clinica.paciente 
+ALTER TABLE clinica.paciente DROP COLUMN telefone; -- Excluir coluna
+ALTER TABLE clinica.paciente RENAME TO novopaciente -- renomeando a tabela paciente para novopaciente
