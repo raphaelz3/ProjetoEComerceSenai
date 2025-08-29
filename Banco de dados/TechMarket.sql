@@ -1,6 +1,7 @@
- CREATE SCHEMA ecommerce IF NOT EXISTS;
+--DDL
+CREATE SCHEMA ecommerce IF NOT EXISTS;
 
---SET search_path TO ecommere - É usado para mudar o schema padrão de public para ecommerce evitando ter que sinalizar onde está a tabela exemplo: ecommerce.pedido
+--SET search_path TO ecommere -É usado para mudar o schema padrão de public para ecommerce evitando ter que sinalizar onde está a tabela exemplo: ecommerce.pedido
 --TABELAS
 CREATE TABLE ecommerce.produto (
 	id_produto INT NOT NULL PRIMARY KEY GENERATED ALWAYS AS IDENTITY,

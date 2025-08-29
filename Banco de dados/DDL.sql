@@ -48,7 +48,7 @@ DROP TABLE IF EXISTS clinica.paciente;
 DROP TABLE IF EXISTS clinica.medico;
 
 --Limpar Tabela
-TRUNCATE TABLE clinica.consulta
+TRUNCATE TABLE clinica.consulta;
 --RESTART IDENTITY -Reinicia a sequencia da tabela
 
 --Editar Tabelas
@@ -56,7 +56,7 @@ TRUNCATE TABLE clinica.consulta
 ALTER TABLE clinica.paciente ADD COLUMN telefone NUMERIC (11); -- adiciona coluna telefone
 ALTER TABLE clinica.paciente ADD COLUMN email TEXT UNIQUE; -- adiciona columa email em que o dado é unico na tabela
 ALTER TABLE clinica.paciente DROP COLUMN telefone; -- Excluir coluna
-ALTER TABLE clinica.paciente RENAME TO novopaciente -- renomeando a tabela paciente para novopaciente
-ALTER TABLE clinica.clinica ALTER COLUMN nome TYPE TEXT;
+ALTER TABLE clinica.paciente RENAME TO novopaciente; -- renomeando a tabela paciente para novopaciente
+ALTER TABLE clinica.clinica ALTER COLUMN nome TYPE TEXT; -- Foi alterado o tipo de dado
 --DML (Linguagem de Manipulação de Dados) - Inserem, Editam ou Removem Dados
 
