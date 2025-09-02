@@ -41,3 +41,5 @@ CREATE TABLE ecommerce.item_do_produto(
 	id_pedido INT REFERENCES ecommerce.pedido(id_pedido),
 	quantidade INT NOT NULL
 );
+
+ALTER TABLE ecommerce.cliente ADD COLUMN nome TEXT;
