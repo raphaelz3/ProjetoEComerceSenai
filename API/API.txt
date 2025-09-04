@@ -1,0 +1,36 @@
+//API
+API REST é o modelo mais comum, onde uma solicitação é enviada pelo cliente e a API responde retornando os dados.
+
+outros modelos de API são SOAP, WebSocket*, RPC, GraphQL.
+
+JPA - Refere-se ao padrão de comunicação entre o JAVA e o SQL
+Hibernate - é um ORM(mapeia os códigos SQL) é a interface mais usada para usar o padrão JPA, ele quem converte o código java em SQL e é o mais usado atualmente, com ele usamos JAVA para criar colunas, tabelas, queries, e gerenciar a conexão com banco.
+
+Spring é um framework que gerencia API e BD, simplificando o código.
+Spring boot é um modulo onde agiliza a configuração das conexões com BD, agilizando ainda mais a codificação.
+
+https://start.spring.io/
+Ajuda a inicializar um projeto no Spring
+
+
+Devemos adicionar 4 pastas dentro da src/main/java/<nomeDoProjeto>
+as pastas são:
+- model - Onde ficam as entidades(tabelas do BD)
+- repository - onde ficam as classes que interagem com o BD, como fazer cadastro, edição e exclusão.
+- service - onde fica a logica de negocio, tudo que evita que dados errados sejam gravados no BD, como por exemplo campos vazios ou nulos, controle de senhas, dados que vão para o BD em geral.
+- controller - porta de entrada da API, recebe um pedido e entrega uma resposta ao cliente.
+
+--Para adicionar as tabelas ao projeto deve-se clicar com o direito no schema, ir em Criar JPA, Selecionar as tabelas e adicionar dentro da pasta model
+
+-- Devemos configurar a conexão com o BD, na pasta resources temos o application.properties, nele colocamos o endereço do BD com spring.datasource.url=jdbc:postgresql://localhost:5432/postgres<aqui é o nome do banco>(para banco postegres)<aqui vai o link da web caso esteja na web>
+spring.datasource.username=postgres (login do banco)
+spring.datasource.password=fic@134 (senha do BD)
+
+-- no repository deve-se criar uma interface chamada <nomedatabelaRepository>, deve-se colocar a annotation @Repository acima da interface criada e usar o extends chamando o JpaRepository<tabela, tipo de PK>
+
+-- No service criamos uma classe <nomadatabelaService>, acima da classe a annotation @Service, e cria-se a injeção de dependência(que diz a o service depende do repository), a Injeção de dependência é criada inicialmente com uma variável privada om o nome na tabela de dependência em repository, exemplo: 
+private final ClienteRepository clienteRepository; //o final define a variável como const
+//Depois é criado o método construtor conforme exemplo
+public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
