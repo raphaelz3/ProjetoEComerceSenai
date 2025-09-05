@@ -12,12 +12,14 @@ public class ClienteService {
     private final ClienteRepository clienteRepository; //o "final" define a variável como const
 
     public ClienteService(ClienteRepository repo) {
-        this.clienteRepository = repo;
+
+        clienteRepository = repo;
     }
 
     //Listar clientes
-    public List<Cliente> listaTodos(){
+    public List<Cliente> listarTodos(){
         return clienteRepository.findAll();
     }
+
 
 }

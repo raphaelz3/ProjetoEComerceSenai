@@ -34,3 +34,5 @@ private final ClienteRepository clienteRepository; //o final define a variável 
 public ClienteService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
+--SOBRE INJEÇÃO DE DEPENDÊNCIA
+    Sempre que uma das camadas depende de ontra fazemos a injeção de dependência para receber os dados que precisamos e deixar a camada funcional
