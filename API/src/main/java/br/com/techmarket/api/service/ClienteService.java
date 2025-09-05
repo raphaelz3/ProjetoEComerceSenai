@@ -12,7 +12,6 @@ public class ClienteService {
     private final ClienteRepository clienteRepository; //o "final" define a variável como const
 
     public ClienteService(ClienteRepository repo) {
-
         clienteRepository = repo;
     }
 
@@ -20,6 +19,5 @@ public class ClienteService {
     public List<Cliente> listarTodos(){
         return clienteRepository.findAll();
     }
-
 
 }
