@@ -3,8 +3,10 @@ package br.com.techmarket.api.controller;
 import br.com.techmarket.api.model.Pagamento;
 import br.com.techmarket.api.repository.PagamentoRepository;
 import br.com.techmarket.api.service.PagamentoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,6 +25,12 @@ public class PagamentoController {
     public ResponseEntity<List<Pagamento>> listarPagamento(){
         List<Pagamento> pagamento = pagamentoService.listarPagamento();
         return ResponseEntity.ok(pagamento);
+    }
+
+    @PostMapping
+    public ResponseEntity<Pagamento> cadastrarPagamento(Pagamento pagamento){
+        Pagamento pg = pagamentoService.cadastrarPagamento(pagamento);
+        return ResponseEntity.status(HttpStatus.CREATED).body(pg);
     }
 
 }

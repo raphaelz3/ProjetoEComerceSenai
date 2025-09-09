@@ -5,8 +5,11 @@ import br.com.techmarket.api.repository.ClienteRepository;
 import br.com.techmarket.api.repository.ProdutoRepository;
 import br.com.techmarket.api.service.ClienteService;
 import br.com.techmarket.api.service.ProdutoService;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,5 +30,11 @@ public class ProdutoController {
     public ResponseEntity<List<Produto>> listarProdutos(){
         List<Produto> produtos = produtoService.listarProdutos();
         return ResponseEntity.ok(produtos);
+    }
+
+    @PostMapping
+    public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto p){
+        Produto p1 = produtoService.cadastrarProduto(p);
+        return ResponseEntity.status(HttpStatus.CREATED).body(p1);
     }
 }

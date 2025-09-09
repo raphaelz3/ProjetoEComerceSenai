@@ -1,6 +1,7 @@
 package br.com.techmarket.api.service;
 
 import br.com.techmarket.api.model.ItemDoProduto;
+import br.com.techmarket.api.repository.ClienteRepository;
 import br.com.techmarket.api.repository.ItemDoProdutoRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,16 @@ public class ItemDoProdutoService {
     private final ItemDoProdutoRepository itemDoProdutoRepository;
 
     public ItemDoProdutoService(ItemDoProdutoRepository repo) {
+
         itemDoProdutoRepository = repo;
     }
 
     public List<ItemDoProduto> listarItemDoProdutos() {
+
         return itemDoProdutoRepository.findAll();
+    }
+
+    public ItemDoProduto cadastrarItemDoProduto(ItemDoProduto iProduto){
+        return itemDoProdutoRepository.save(iProduto);
     }
 }

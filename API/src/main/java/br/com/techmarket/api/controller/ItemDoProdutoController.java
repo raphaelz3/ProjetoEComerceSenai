@@ -2,8 +2,10 @@ package br.com.techmarket.api.controller;
 
 import br.com.techmarket.api.model.ItemDoProduto;
 import br.com.techmarket.api.service.ItemDoProdutoService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,5 +23,11 @@ public class ItemDoProdutoController {
     public ResponseEntity<List<ItemDoProduto>> listarItemDoProdutos() {
         List<ItemDoProduto> itemDoProdutos = itemDoProdutoService.listarItemDoProdutos();
         return ResponseEntity.ok(itemDoProdutos);
+    }
+
+    @PostMapping
+    public ResponseEntity<ItemDoProduto> cadastrarItemDoProduto(ItemDoProduto itemDoProduto){
+        ItemDoProduto p = itemDoProdutoService.cadastrarItemDoProduto(itemDoProduto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(p);
     }
 }

@@ -3,11 +3,9 @@ package br.com.techmarket.api.controller;
 import br.com.techmarket.api.model.Cliente;
 import br.com.techmarket.api.repository.ClienteRepository;
 import br.com.techmarket.api.service.ClienteService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,4 +28,10 @@ public class ClienteController {
         List<Cliente> clientes = clienteService.listarTodos();//Aqui pegamos a função ListarTodos de ClienteService
         return ResponseEntity.ok(clientes);
     }
+    @PostMapping("/api/cadastrar")
+    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente){
+         Cliente c = clienteService.cadastrarCliente(cliente);
+        return ResponseEntity.status(HttpStatus.CREATED).body(c);
+    }
+
 }

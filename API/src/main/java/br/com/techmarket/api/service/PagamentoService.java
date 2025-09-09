@@ -11,10 +11,17 @@ public class PagamentoService {
     private final PagamentoRepository pagamentoRepository;
 
     public PagamentoService(PagamentoRepository service) {
+
         pagamentoRepository = service;
     }
 
     public List<Pagamento> listarPagamento(){
+
         return pagamentoRepository.findAll();
+    }
+
+    public Pagamento cadastrarPagamento(Pagamento p){
+
+        return pagamentoRepository.save(p);
     }
 }
