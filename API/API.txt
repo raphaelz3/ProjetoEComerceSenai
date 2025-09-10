@@ -36,3 +36,9 @@ public ClienteService(ClienteRepository clienteRepository) {
     }
 --SOBRE INJEÇÃO DE DEPENDÊNCIA
     Sempre que uma das camadas depende de ontra fazemos a injeção de dependência para receber os dados que precisamos e deixar a camada funcional
+
+
+GET - BUSCAR DADOS
+PUT
+POST - CADASTRAR DADOS
+DELETE - DELETAR DADOS

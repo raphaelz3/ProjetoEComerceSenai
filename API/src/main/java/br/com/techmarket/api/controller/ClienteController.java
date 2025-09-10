@@ -28,10 +28,30 @@ public class ClienteController {
         List<Cliente> clientes = clienteService.listarTodos();//Aqui pegamos a função ListarTodos de ClienteService
         return ResponseEntity.ok(clientes);
     }
-    @PostMapping("/api/cadastrar")
-    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente){
+    @PostMapping
+    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente){//RequestBody é usado para receber informações do corpo
          Cliente c = clienteService.cadastrarCliente(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(c);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarClientePorId(@PathVariable Integer id){//PathVariable é usado para receber dados pelo URL
+        //Procuramos o cliente
+        Cliente c = clienteService.buscarClientePorId(id);
+        //o que fazer se não encontrar
+        if (c == null){
+            //return ResponseEntity.notFound().build(); retorna o erro de maneira simples ou
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("404\n" + "Cliente " + id + " não encontrado");//essa forma é mais completa ;)
+        }
+        //se encontrar retorna o cliente
+            return ResponseEntity.ok(c);
+    }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarClientePorId(@PathVariable Cliente cliente){
+        Cliente c = clienteService.deletarClientePorId(cliente.getId());
+        if (c == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado");
+        }
+        return ResponseEntity.ok(c);
+    }
 }

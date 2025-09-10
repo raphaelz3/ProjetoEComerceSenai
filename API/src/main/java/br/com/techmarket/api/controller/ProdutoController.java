@@ -8,10 +8,7 @@ import br.com.techmarket.api.service.ProdutoService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,4 +34,19 @@ public class ProdutoController {
         Produto p1 = produtoService.cadastrarProduto(p);
         return ResponseEntity.status(HttpStatus.CREATED).body(p1);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarProdutos(@PathVariable Integer id){
+        Produto p = produtoService.buscarProdutoPorId(id);
+
+        if (p == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado");
+        }
+        return ResponseEntity.ok(p);
+    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<?> excluirProduto(@PathVariable Integer id){
+//        Produto p = ;
+//    }
+
 }

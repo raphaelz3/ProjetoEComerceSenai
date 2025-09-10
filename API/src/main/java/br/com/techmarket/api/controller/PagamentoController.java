@@ -5,10 +5,7 @@ import br.com.techmarket.api.repository.PagamentoRepository;
 import br.com.techmarket.api.service.PagamentoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class PagamentoController {
     }
 
     @PostMapping
-    public ResponseEntity<Pagamento> cadastrarPagamento(Pagamento pagamento){
+    public ResponseEntity<Pagamento> cadastrarPagamento(@RequestBody Pagamento pagamento){
         Pagamento pg = pagamentoService.cadastrarPagamento(pagamento);
         return ResponseEntity.status(HttpStatus.CREATED).body(pg);
     }

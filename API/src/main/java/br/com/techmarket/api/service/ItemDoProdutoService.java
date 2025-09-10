@@ -24,4 +24,8 @@ public class ItemDoProdutoService {
     public ItemDoProduto cadastrarItemDoProduto(ItemDoProduto iProduto){
         return itemDoProdutoRepository.save(iProduto);
     }
+
+    public ItemDoProduto buscarItemDoProdutoPorId(Integer id){
+        return itemDoProdutoRepository.findById(id).orElse(null);
+    }
 }

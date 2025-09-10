@@ -21,4 +21,12 @@ public class ProdutoService {
     public Produto cadastrarProduto(Produto p){
         return produtoRepository.save(p);
     }
+
+    public Produto buscarProdutoPorId(Integer id){
+        return produtoRepository.findById(id).orElse(null);
+    }
+
+    public Produto excluirProduto(Integer id){
+        return produtoRepository.findById(id).orElse(null);
+    }
 }
