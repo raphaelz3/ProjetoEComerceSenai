@@ -45,8 +45,8 @@ public class ProdutoController {
         return ResponseEntity.ok(p);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarProdutoPorId(@PathVariable Produto id){
-        Produto p = produtoService.deletarProdutoPorId(id.getId());
+    public ResponseEntity<?> deletarProdutoPorId(@PathVariable Integer id){
+        Produto p = produtoService.deletarProdutoPorId(id);
         if (p == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado");
         }
