@@ -30,4 +30,22 @@ public class PagamentoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(pg);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> buscarPagamentoPorId(@PathVariable Integer id){
+        Pagamento pagamento = pagamentoService.buscarPagamentoPorId(id);
+        if(pagamento == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(id + " não encontrado");
+        }
+        return ResponseEntity.ok(pagamento);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarPagamentoPorId(@PathVariable Integer id){
+        Pagamento pagamento = pagamentoService.deletarPagamentoPorId(id);
+        if(pagamento == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(id + " id não encontrado");
+        }
+        return ResponseEntity.ok(pagamento);
+    }
+
 }

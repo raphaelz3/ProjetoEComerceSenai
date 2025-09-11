@@ -5,7 +5,9 @@ import br.com.techmarket.api.service.ItemDoProdutoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.function.EntityResponse;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.List;
 
 @RestController
@@ -33,6 +35,15 @@ public class ItemDoProdutoController {
 
         ItemDoProduto p = itemDoProdutoService.buscarItemDoProdutoPorId(id);
 
+        if(p == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não Encontrado");
+        }
+        return ResponseEntity.ok(p);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deletarItemDoProdutoPorId(@PathVariable Integer id){
+        ItemDoProduto p = itemDoProdutoService.buscarItemDoProdutoPorId(id);
         if(p == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não Encontrado");
         }

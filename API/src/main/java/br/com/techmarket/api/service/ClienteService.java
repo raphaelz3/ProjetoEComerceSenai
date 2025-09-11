@@ -3,6 +3,7 @@ package br.com.techmarket.api.service;
 import br.com.techmarket.api.model.Cliente;
 import br.com.techmarket.api.repository.ClienteRepository;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -38,6 +39,20 @@ public class ClienteService {
         }
         //quando é encontrado apagamos
         clienteRepository.delete(c);
-        return c;
+        return (c);
+    }
+
+    public Cliente atualizarCliente(Integer id, Cliente clienteNovo){
+        Cliente clienteAntigo = buscarClientePorId(id); //buscamos o cliente
+        if(clienteAntigo == null){//verificamos se existe
+            return null;
+        }
+        clienteAntigo.setNome(clienteNovo.getNome());
+        clienteAntigo.setEmail(clienteNovo.getEmail());
+        clienteAntigo.setSenha(clienteNovo.getSenha());
+        clienteAntigo.setTelefone(clienteNovo.getTelefone());
+
+        return clienteRepository.save(clienteAntigo);
+
     }
 }

@@ -24,4 +24,17 @@ public class PagamentoService {
 
         return pagamentoRepository.save(p);
     }
+
+    public Pagamento buscarPagamentoPorId(Integer id) {
+        return pagamentoRepository.findById(id).orElse(null);
+    }
+
+    public Pagamento deletarPagamentoPorId(Integer id) {
+        Pagamento p = buscarPagamentoPorId(id);
+        if(p == null){
+            return null;
+        }
+        pagamentoRepository.deleteById(id);
+        return p;
+    }
 }

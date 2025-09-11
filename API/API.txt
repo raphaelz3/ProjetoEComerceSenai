@@ -39,6 +39,6 @@ public ClienteService(ClienteRepository clienteRepository) {
 
 
 GET - BUSCAR DADOS
-PUT
+PUT - EDITAR DADOS
 POST - CADASTRAR DADOS
 DELETE - DELETAR DADOS

@@ -28,4 +28,13 @@ public class ItemDoProdutoService {
     public ItemDoProduto buscarItemDoProdutoPorId(Integer id){
         return itemDoProdutoRepository.findById(id).orElse(null);
     }
+
+    public ItemDoProduto deletarItemDoProdutoPorId(Integer id){
+        ItemDoProduto item =  buscarItemDoProdutoPorId(id);
+        if(item == null){
+            return null;
+        }
+        itemDoProdutoRepository.delete(item);
+        return item;
+    }
 }

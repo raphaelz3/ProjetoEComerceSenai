@@ -21,4 +21,18 @@ public class PedidoService {
     public Pedido cadastrarPedido(Pedido p){
         return pedidoRepository.save(p);
     }
+
+    public Pedido buscarPedidoPorId(Integer id){
+        return pedidoRepository.findById(id).orElse(null);
+    }
+
+    public Pedido deletarPedidoPorId(Integer id){
+        Pedido p = buscarPedidoPorId(id);
+
+        if(p == null){
+            return null;
+        }
+        pedidoRepository.delete(p);
+        return p;
+    }
 }
