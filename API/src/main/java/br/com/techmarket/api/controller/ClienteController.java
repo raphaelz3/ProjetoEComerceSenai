@@ -2,6 +2,8 @@ package br.com.techmarket.api.controller;
 
 import br.com.techmarket.api.model.Cliente;
 import br.com.techmarket.api.service.ClienteService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,8 @@ import java.util.List;
 @RestController
 //aqui indicamos o URL da API - Endpoint
 @RequestMapping("/api/clientes")
+//aqui estou criando uma separação visual para  o Swagger, assim as funções ficam separadas
+@Tag(name = "Clientes", description = "Método de Clientes")
 public class ClienteController {
     //Controler depende do service, então fazemos a injeção de dependência conforme abaixo
     //aqui é onde declaramos a variavel
@@ -22,7 +26,9 @@ public class ClienteController {
     }
 
     //Listar todos clientes
+
     @GetMapping //Essa anotação pega as informações do BD e entrega ao Front
+    @Operation (summary = "Listar Clientes", description = "Listar todos os clientes")//Esta anotação é usada para organizar os metodos no swagger
     public ResponseEntity<List<Cliente>> listarClientes() {//ResponseEntity é quem retorna o código de resposta
         List<Cliente> clientes = clienteService.listarTodos();//Aqui pegamos a função ListarTodos de ClienteService
         return ResponseEntity.ok(clientes);

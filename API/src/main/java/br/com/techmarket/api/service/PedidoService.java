@@ -35,4 +35,19 @@ public class PedidoService {
         pedidoRepository.delete(p);
         return p;
     }
+
+    public Pedido atualizarPedido(Integer id, Pedido p){
+        Pedido ped =  buscarPedidoPorId(id);
+        if(ped == null){
+            return null;
+        }
+        ped.setId(p.getId());
+        ped.setDataPedido(p.getDataPedido());
+        ped.setIdCliente(p.getIdCliente());
+        ped.setStatus(p.getStatus());
+        ped.setValorTotal(p.getValorTotal());
+
+        pedidoRepository.save(ped);
+        return p;
+    }
 }

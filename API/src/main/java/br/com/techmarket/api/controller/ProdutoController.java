@@ -1,16 +1,12 @@
 package br.com.techmarket.api.controller;
 
 import br.com.techmarket.api.model.Produto;
-import br.com.techmarket.api.repository.ClienteRepository;
-import br.com.techmarket.api.repository.ProdutoRepository;
-import br.com.techmarket.api.service.ClienteService;
 import br.com.techmarket.api.service.ProdutoService;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -52,5 +48,15 @@ public class ProdutoController {
         }
         return ResponseEntity.ok(p);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> atualizarProdutoPorId(@PathVariable Integer id, @RequestBody Produto p){
+        Produto prod =  produtoService.atualizarProdutoPorId(id, p);
+        if (prod == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(id + " Não encontrado");
+        }
+        return ResponseEntity.ok(prod);
+    }
+
 
 }
