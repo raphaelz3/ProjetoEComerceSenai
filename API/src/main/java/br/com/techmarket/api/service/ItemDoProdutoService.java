@@ -37,4 +37,19 @@ public class ItemDoProdutoService {
         itemDoProdutoRepository.delete(item);
         return item;
     }
+
+    public ItemDoProduto atualizarItemDoProdutoPorId(Integer id, ItemDoProduto iProduto){
+        ItemDoProduto item =  buscarItemDoProdutoPorId(id);
+        if(item == null){
+            return null;
+        }
+
+        item.setQuantidade(iProduto.getQuantidade());
+        item.setIdPedido(iProduto.getIdPedido());
+        item.setIdProduto(iProduto.getIdProduto());
+
+        itemDoProdutoRepository.save(item);
+
+        return item;
+    }
 }

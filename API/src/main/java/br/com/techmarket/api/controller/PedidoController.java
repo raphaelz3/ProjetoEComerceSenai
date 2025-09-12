@@ -2,6 +2,8 @@ package br.com.techmarket.api.controller;
 
 import br.com.techmarket.api.model.Pedido;
 import br.com.techmarket.api.service.PedidoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -12,7 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/pedidos")
-@Tag(name = "Pedidos", description = "Metodo para listar todos os pedidos")
+@Tag(name = "Pedidos", description = "Metodo pedidos")
 public class PedidoController {
     private final PedidoService pedidoService;
 
@@ -22,6 +24,7 @@ public class PedidoController {
 
 
     @GetMapping
+    @Operation(summary = "Listar todos os pedidos")
    public ResponseEntity<List<Pedido>> listarPedidos(){
         List<Pedido> pedidos =  pedidoService.listarPedidos();
         return ResponseEntity.ok().body(pedidos);

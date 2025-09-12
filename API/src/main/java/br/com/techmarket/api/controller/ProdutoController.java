@@ -3,6 +3,7 @@ package br.com.techmarket.api.controller;
 import br.com.techmarket.api.model.Produto;
 import br.com.techmarket.api.service.ProdutoService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/produtos")
+@Tag(name = "Produtos", description = "Metodos de pedido")
 public class ProdutoController {
 
     private final ProdutoService produtoService;

@@ -3,6 +3,7 @@ package br.com.techmarket.api.controller;
 import br.com.techmarket.api.model.Pagamento;
 import br.com.techmarket.api.repository.PagamentoRepository;
 import br.com.techmarket.api.service.PagamentoService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/pagamento")
+@Tag(name = "Pagamento", description = "Metodos de pagamento")
 public class PagamentoController {
     private final PagamentoService pagamentoService;
 
@@ -46,6 +48,15 @@ public class PagamentoController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(id + " id não encontrado");
         }
         return ResponseEntity.ok(pagamento);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?>  atualizarPagamento(@PathVariable Integer id, @RequestBody Pagamento pagamento){
+        Pagamento pg = pagamentoService.atualizarPagamento(id, pagamento);
+        if(pagamento == null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Não encontrado");
+        }
+        return ResponseEntity.ok(pg);
     }
 
 }
