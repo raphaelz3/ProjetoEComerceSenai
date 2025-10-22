@@ -3,6 +3,7 @@ package br.com.techmarket.api.controller;
 import br.com.techmarket.api.model.Produto;
 import br.com.techmarket.api.service.ProdutoService;
 
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +23,21 @@ public class ProdutoController {
     }
 
     @GetMapping
+    @Operation(summary = "Listar Todos os Produtos")
     public ResponseEntity<List<Produto>> listarProdutos(){
         List<Produto> produtos = produtoService.listarProdutos();
         return ResponseEntity.ok(produtos);
     }
 
     @PostMapping
+    @Operation(summary = "Cadastrar novos Produtos")
     public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto p){
         Produto p1 = produtoService.cadastrarProduto(p);
         return ResponseEntity.status(HttpStatus.CREATED).body(p1);
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "Buscar produto por ID")
     public ResponseEntity<?> buscarProdutos(@PathVariable Integer id){
         Produto p = produtoService.buscarProdutoPorId(id);
 
@@ -43,6 +47,7 @@ public class ProdutoController {
         return ResponseEntity.ok(p);
     }
     @DeleteMapping("/{id}")
+    @Operation(summary = "Deletar produto por ID")
     public ResponseEntity<?> deletarProdutoPorId(@PathVariable Integer id){
         Produto p = produtoService.deletarProdutoPorId(id);
         if (p == null){
@@ -52,6 +57,7 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
+    @Operation(summary = "Atualizar produdo por ID")
     public ResponseEntity<?> atualizarProdutoPorId(@PathVariable Integer id, @RequestBody Produto p){
         Produto prod =  produtoService.atualizarProdutoPorId(id, p);
         if (prod == null){
